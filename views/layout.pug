@@ -1,0 +1,40 @@
+doctype html
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(http-equiv="X-UA-Compatible", content="IE=edge")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css")
+        link(rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css")
+        link(rel="stylesheet" href="styles.css")
+        title Ecommerce
+    body 
+        header 
+            nav.navbar.navbar-expand-lg.navbar-light.bg-light
+                a.navbar-brand(href='/') Users
+                button.navbar-toggler(type='button', data-toggle='collapse', data-target='#navbarSupportedContent', aria-controls='navbarSupportedContent', aria-expanded='false', aria-label='Toggle navigation')
+                    span.navbar-toggler-icon
+                .collapse.navbar-collapse(id='navbarSupportedContent')
+                    ul.navbar-nav.mr-auto
+                        li.nav-item.active
+                            a.nav-link(href='/') Home
+                -if (!session.loggedIn)
+                    ul.navbar-nav.float-right
+                        li.nav-item
+                            a.nav-link(href='/login') Login
+                        li.nav-item
+                            a.nav-link(href='/register') Register
+                -else
+                    ul.navbar-nav.float-right
+                        li.nav-item 
+                            a.nav-link(href='/logout') Logout
+        - var messages = getMessages()
+        if messages.success
+            .container.mt-4
+                each msg in messages.success
+                    .alert.alert-success= msg
+        if messages.error
+            .container.mt-4
+                each msg in messages.error
+                    .alert.alert-danger= msg
+    block content

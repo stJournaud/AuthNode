@@ -1,0 +1,18 @@
+html, body {
+    margin: 0;
+    padding: 0;
+  height: 100%;
+}
+
+body .register-form, body .login-form {
+  margin: auto;
+  width: 100%;
+  max-width: 300px;
+  padding: 10px;
+}
+body .register-form .form-control, body .login-form .form-control {
+  position: relative;
+  box-sizing: border-box;
+  margin: 10px;
+  font-size: 16px;
+}
